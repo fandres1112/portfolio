@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0a0a0f;
+  --fg: #e2e8f0;
+  --accent-cyan: #22d3ee;
+  --accent-green: #4ade80;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  min-height: 100vh;
+}
+
+/* Patrón de fondo tipo grid de código */
+.bg-code-grid {
+  background-image: linear-gradient(
+      rgba(34, 211, 238, 0.04) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Brillo sutil en bordes al hover */
+.glow-border {
+  position: relative;
+}
+.glow-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, #22d3ee40, #4ade8040, #22d3ee40);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.glow-border:hover::before {
+  opacity: 1;
+}
+
+/* Animación de aparición al scroll */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+}
+.animate-on-scroll.visible {
+  animation: fade-in-up 0.7s ease-out forwards;
+}
+
+@keyframes fade-in-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Orb flotante centro (hero) */
+@keyframes float-orb {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  33% {
+    transform: translate(-45%, -55%) scale(1.05);
+  }
+  66% {
+    transform: translate(-55%, -45%) scale(0.95);
+  }
+}
+
+/* Orb flotante derecha */
+@keyframes float-orb-right {
+  0%,
+  100% {
+    transform: scale(1) translate(0, 0);
+  }
+  50% {
+    transform: scale(1.1) translate(-20px, -15px);
+  }
+}
+
+/* Gradiente animado en texto (Hero) — efecto exclusivo */
+@keyframes gradient-text-flow {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+.animate-gradient-text {
+  background-size: 200% auto;
+  animation: gradient-text-flow 6s ease-in-out infinite;
+}
+
+/* Ondas al mover el cursor en el Hero — efecto agua / eco */
+@keyframes ripple-expand {
+  0% {
+    transform: translate(-50%, -50%) scale(0.35);
+    opacity: 0.85;
+  }
+  70% {
+    opacity: 0.25;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2.8);
+    opacity: 0;
+  }
+}
+.animate-ripple {
+  animation: ripple-expand 1.6s ease-out forwards;
+  pointer-events: none;
+}
+
+/* Selección de texto con color de acento */
+::selection {
+  background: rgba(34, 211, 238, 0.3);
+  color: #fff;
+}

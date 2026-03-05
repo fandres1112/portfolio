@@ -25,7 +25,7 @@ export default function About() {
     >
       <div className="max-w-4xl mx-auto">
         <h2 className="font-mono text-xs sm:text-sm font-medium text-accent-cyan mb-2">
-          <span className="text-code-comment">// </span>sobre_mí
+          <span className="text-code-comment">{"// "}</span>sobre_mí
         </h2>
         <p className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-8 sm:mb-10">
           Más que código

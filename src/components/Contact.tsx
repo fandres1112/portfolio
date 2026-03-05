@@ -32,7 +32,7 @@ export default function Contact() {
     >
       <div className="max-w-3xl mx-auto text-center">
         <h2 className="font-mono text-xs sm:text-sm font-medium text-accent-cyan mb-2">
-          <span className="text-code-comment">// </span>contacto
+          <span className="text-code-comment">{"// "}</span>contacto
         </h2>
         <p className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4">
           ¿Hablamos?

@@ -156,7 +156,7 @@ export default function Hero() {
 
       <div className="relative z-10 text-center max-w-4xl mx-auto w-full">
         <p className="font-mono text-accent-cyan mb-3 sm:mb-4 text-xs sm:text-sm md:text-base animate-fade-in-up">
-          <span className="text-code-comment">// </span>
+          <span className="text-code-comment">{"// "}</span>
           <span className="text-slate-400">desarrollador_software</span>
         </p>
         <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold mb-3 sm:mb-4 leading-tight animate-fade-in-up" style={{ animationDelay: "0.1s" }}>

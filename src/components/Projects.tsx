@@ -88,7 +88,7 @@ export default function Projects() {
     >
       <div className="max-w-5xl mx-auto">
         <h2 className="font-mono text-xs sm:text-sm font-medium text-accent-cyan mb-2">
-          <span className="text-code-comment">// </span>proyectos
+          <span className="text-code-comment">{"// "}</span>proyectos
         </h2>
         <p className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2 sm:mb-3">
           Proyectos

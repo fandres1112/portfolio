@@ -2,12 +2,7 @@
 
 import Link from "next/link";
 import { useRef, useEffect, useState } from "react";
-
-const links = [
-  { label: "GitHub", href: "https://github.com", icon: "→" },
-  { label: "LinkedIn", href: "https://linkedin.com", icon: "→" },
-  { label: "Email", href: "mailto:tu@email.com", icon: "→" },
-];
+import { contactLinks } from "@/data/site";
 
 export default function Contact() {
   const ref = useRef<HTMLElement>(null);
@@ -42,14 +37,13 @@ export default function Contact() {
           leerte.
         </p>
         <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center">
-          {links.map((link) => (
+          {contactLinks.map((link) => (
             <Link
               key={link.label}
               href={link.href}
               target={link.href.startsWith("http") ? "_blank" : undefined}
-              rel={
-                link.href.startsWith("http") ? "noopener noreferrer" : undefined
-              }
+              rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+              aria-label={link.label}
               className="group font-mono px-6 sm:px-8 py-4 rounded-xl border border-accent-cyan/40 bg-accent-cyan/5 text-accent-cyan hover:bg-accent-cyan hover:text-bg transition-all duration-200 flex items-center justify-center gap-2 min-h-[48px] touch-manipulation active:scale-[0.98]"
             >
               {link.label}

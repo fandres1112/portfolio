@@ -59,11 +59,11 @@ const projects = [
   {
     title: "Portafolio personal",
     description:
-      "Este mismo sitio. Dashboard y métricas en tiempo real con Next.js y Tailwind.",
+      "Este mismo sitio. Portafolio con Next.js 15, TypeScript y Tailwind CSS.",
     tech: ["Next.js", "Tailwind", "TypeScript"],
     type: "personal" as const,
     href: "#",
-    repo: "https://github.com", // enlace a tu repo cuando lo subas
+    repo: "https://github.com/fandres1112/portfolio",
   },
 ];
 

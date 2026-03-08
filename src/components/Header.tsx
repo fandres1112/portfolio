@@ -2,21 +2,17 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-
-const navLinks = [
-  { href: "#inicio", label: "Inicio" },
-  { href: "#sobre-mi", label: "Sobre_mí" },
-  { href: "#proyectos", label: "Proyectos" },
-  { href: "#habilidades", label: "Habilidades" },
-  { href: "#contacto", label: "Contacto" },
-];
+import { navLinks } from "@/data/site";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 40);
+      setMenuOpen((open) => (open ? false : open));
+    };
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);

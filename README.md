@@ -1,6 +1,6 @@
 # Portafolio - Fabian Jaramillo
 
-Portafolio personal como desarrollador de software. Construido con **Next.js 15** y **Tailwind CSS**.
+Portafolio personal como desarrollador de software. **Next.js 15**, **TypeScript** y **Tailwind CSS**.
 
 ## Desarrollo local
 
@@ -9,58 +9,32 @@ npm install
 npm run dev
 ```
 
-Abre [http://localhost:3000](http://localhost:3000) en el navegador.
+Abre [http://localhost:3000](http://localhost:3000).
 
 ## Despliegue en Vercel
 
-### Opción 1: Desde la web (recomendado)
+1. Sube el proyecto a GitHub e importa el repo en [vercel.com](https://vercel.com) (**Add New** → **Project**).
+2. Vercel detecta Next.js; deja **Build Command** y **Output** por defecto. **Deploy**.
+3. Cada `git push` a `main` genera un nuevo despliegue.
 
-1. **Sube el proyecto a GitHub**
-   - Crea un repositorio en [github.com](https://github.com).
-   - En la carpeta del proyecto:
-   ```bash
-   git init
-   git add .
-   git commit -m "Portafolio listo para Vercel"
-   git branch -M main
-   git remote add origin https://github.com/TU_USUARIO/TU_REPO.git
-   git push -u origin main
-   ```
+**O con CLI:** `npm i -g vercel` → `vercel login` → `vercel` (producción: `vercel --prod`).
 
-2. **Conecta con Vercel**
-   - Entra en [vercel.com](https://vercel.com) e inicia sesión con GitHub.
-   - **Add New** → **Project** → importa el repositorio del portafolio.
-   - Vercel detecta Next.js automáticamente (usa `vercel.json` y `package.json`).
-   - Deja **Build Command**: `npm run build` y **Output Directory**: `.next`.
-   - Haz clic en **Deploy**.
+**Comprobar build en local:** `npm run build` y `npm run start`.
 
-3. **Listo.** Tu sitio quedará en una URL como `tu-proyecto.vercel.app`. Cada `git push` a `main` generará un nuevo despliegue.
+### Variable de entorno (opcional)
 
-### Opción 2: Con Vercel CLI
+En Vercel → Project → **Settings** → **Environment Variables** puedes definir:
 
-```bash
-npm i -g vercel
-vercel login
-vercel
-```
+- `NEXT_PUBLIC_SITE_URL`: URL pública del sitio (ej. `https://portfolio-fandres1112.vercel.app`). Se usa en Open Graph, sitemap y robots.
 
-Sigue las preguntas (link a proyecto nuevo, carpeta actual). Para producción: `vercel --prod`.
-
-### Comprobar el build en local
-
-```bash
-npm run build
-npm run start
-```
-
-Si esto funciona, el despliegue en Vercel debería ser correcto.
+Si no la defines, el proyecto usa por defecto la URL de Vercel indicada en `src/data/site.ts`.
 
 ## Personalización
 
-- **Datos personales**: edita los textos en `src/components/` (Hero, About, Contact).
-- **Proyectos**: modifica el array `projects` en `src/components/Projects.tsx`.
-- **Habilidades**: modifica el array `skills` en `src/components/Skills.tsx`.
-- **Enlaces**: actualiza GitHub, LinkedIn y email en `src/components/Contact.tsx` y en el Header si añades enlaces.
+- **Nombre, URL del sitio, navegación y enlaces de contacto:** todo en **`src/data/site.ts`**. Un solo archivo para mantener el resto del sitio al día.
+- **Textos (Hero, About):** `src/components/Hero.tsx` y `src/components/About.tsx`.
+- **Proyectos:** array `projects` en `src/components/Projects.tsx`.
+- **Habilidades:** array `skills` en `src/components/Skills.tsx`.
 
 ## Estructura
 
@@ -68,14 +42,28 @@ Si esto funciona, el despliegue en Vercel debería ser correcto.
 src/
 ├── app/
 │   ├── globals.css
+│   ├── icon.tsx          # Favicon generado (iniciales FJ)
 │   ├── layout.tsx
-│   └── page.tsx
-└── components/
-    ├── Header.tsx
-    ├── Hero.tsx
-    ├── About.tsx
-    ├── Projects.tsx
-    ├── Skills.tsx
-    ├── Contact.tsx
-    └── Footer.tsx
+│   ├── page.tsx
+│   ├── robots.ts         # /robots.txt
+│   └── sitemap.ts        # /sitemap.xml
+├── components/
+│   ├── Header.tsx
+│   ├── Hero.tsx
+│   ├── About.tsx
+│   ├── Projects.tsx
+│   ├── Skills.tsx
+│   ├── Contact.tsx
+│   └── Footer.tsx
+└── data/
+    └── site.ts           # Datos del sitio (nombre, url, nav, contacto)
 ```
+
+## Scripts
+
+| Comando       | Uso                    |
+|---------------|------------------------|
+| `npm run dev` | Servidor de desarrollo |
+| `npm run build` | Build de producción  |
+| `npm run start` | Servir build local  |
+| `npm run lint` | ESLint                |
